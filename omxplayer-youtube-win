@@ -1,0 +1,19 @@
+#!/bin/bash
+
+URL=$(zenity --entry --text="URL de Youtube")
+
+if [ ! -z ${URL} ]
+then
+	DISPLAY_SIZE=$(zenity --list --title="Size Video" \
+	--text="Choose size video" \
+	--column="value" --column="Size" --hide-column=1 \
+	"0 0 0 0" "Full" \
+	"0 0 1280 720" "1280x720" \
+	"0 0 854 480" "854x480" \
+	"0 0 640 360" "640x360")
+
+	if [ ! ${#DISPLAY_SIZE} -eq 0 ]
+	then
+		omxplayer -o hdmi --win "${DISPLAY_SIZE}" "$(youtube-dl -g -f best ${URL})"
+	fi
+fi
