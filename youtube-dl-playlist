@@ -1,0 +1,13 @@
+#!/bin/bash
+
+URL=$(zenity --entry --text="URL del playlist")
+
+if [ ! -z $URL ]
+then
+	TARGET=$(zenity --file-selection --directory --title="Descarga en ...")
+
+	if [ ! -z $TARGET ]
+	then
+		youtube-dl -i -f mp4 --yes-playlist -o "$TARGET/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" $URL
+	fi
+fi
