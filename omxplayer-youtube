@@ -1,0 +1,8 @@
+#!/bin/bash
+
+URL=$(zenity --entry --text="URL de Youtube")
+
+if [ ! -z $URL ]
+then
+	omxplayer -o hdmi $(youtube-dl -g -f best $URL)
+fi
