@@ -1,9 +1,9 @@
 #!/bin/bash
 
-TARGET=$(zenity --file-selection --title='Selecciona video...')
+#TARGET=$(zenity --file-selection --title='Selecciona video...')
 
-if [ ! ${#TARGET} -eq 0 ]
-then
+#if [ ! ${#TARGET} -eq 0 ]
+#then
 	DISPLAY_SIZE=$(zenity --list --title="Size Video" \
 	--text="Choose size video" \
 	--column="value" --column="Size" --hide-column=1 \
@@ -14,6 +14,6 @@ then
 
 	if [ ! ${#DISPLAY_SIZE} -eq 0 ]
 	then
-		omxplayer -o hdmi --win "${DISPLAY_SIZE}" "${TARGET}"
+		omxplayer -o hdmi --vol -2700 --win "${DISPLAY_SIZE}" "${1}"
 	fi
-fi
+#fi
